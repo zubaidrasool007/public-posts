@@ -1,0 +1,46 @@
+<h1 mat-dialog-title>Create New Post</h1>
+<div mat-dialog-content>
+    <!-- <p>What's your favorite animal?</p> -->
+    <mat-form-field appearance="fill">
+        <mat-label>User Name</mat-label>
+        <input type="text"
+               aria-label="User Name"
+               matInput
+               [(ngModel)]="newPost.userName"
+               [matAutocomplete]="userAutoComplete">
+        <mat-autocomplete #userAutoComplete="matAutocomplete">
+          <mat-option *ngFor="let user of data" [value]="user.name">
+            {{user.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Add Action Text</mat-label>
+        <textarea matInput name="action-text" [(ngModel)]="newPost.text"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Board</mat-label>
+        <input type="text"
+               aria-label="Board"
+               matInput
+               [(ngModel)]="newPost.board"
+               [matAutocomplete]="boardAutoComplete">
+        <mat-autocomplete #boardAutoComplete="matAutocomplete">
+          <mat-option value="JIRA">
+            JIRA
+          </mat-option>
+          <mat-option value="Slack">
+            Slack
+          </mat-option>
+          <mat-option value="Trello">
+            Trello
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onCloseClick()" cdkFocusInitial>Close</button>
+    <button [disabled]="!newPost.board || !newPost.userName || !newPost.text" mat-button [mat-dialog-close]="newPost">Ok</button>
+</div>
