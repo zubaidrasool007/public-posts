@@ -1,0 +1,43 @@
+<div style="display: flex; width: 100%;">
+    <mat-card *ngIf="!postsList.length">
+        No Posts Yet!
+    </mat-card>
+    <ng-container *ngFor="let post of postsList">
+        <div style="width: 40%; margin-left: 5%;">
+            <mat-card>
+                <div style="display: flex;justify-content: space-between;">
+                    <div>
+                        <button style="cursor: default" mat-mini-fab color="accent">
+                            {{postService.getUserNameInitial(post.userName)}}
+                        </button>
+                        <button mat-button [matMenuTriggerFor]="menu">{{post.userName}}</button>
+                        <mat-menu #menu="matMenu">
+                            <button *ngFor="let user of usersList" mat-menu-item (click)="userChanged(user, post)">
+                                <button style="cursor: default" mat-mini-fab color="accent">
+                                    {{postService.getUserNameInitial(user.name)}}
+                                </button> {{user.name}}
+                            </button>
+                            <button mat-menu-item>New +</button>
+                        </mat-menu>
+                    </div>
+                    <div>
+                        <mat-icon>today</mat-icon> {{postService.getPostDate(post.date)}}
+                    </div>
+                </div>
+                <div [contentEditable]="true" (blur)="updatePost($event, post)">
+                    {{post.text}}
+                </div>
+                <div>
+                    <button mat-button [matMenuTriggerFor]="menu">{{post.board}}</button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item>JIRA</button>
+                        <button mat-menu-item>Slack</button>
+                        <button mat-menu-item>Trello</button>
+                        <button mat-menu-item>None</button>
+                    </mat-menu>
+                    <!-- {{post.board}} -->
+                </div>
+            </mat-card>
+        </div>
+    </ng-container>
+</div>
