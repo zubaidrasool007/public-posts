@@ -1,41 +1,50 @@
-<div style="display: flex; width: 100%;">
+<div style="display: flex; width: 100%; flex-wrap: wrap;">
     <mat-card *ngIf="!postsList.length">
         No Posts Yet!
     </mat-card>
     <ng-container *ngFor="let post of postsList">
-        <div style="width: 40%; margin-left: 5%;">
+        <div style="width: 40%; margin-left: 5%; margin-bottom: 12px;">
             <mat-card>
                 <div style="display: flex;justify-content: space-between;">
-                    <div>
-                        <button style="cursor: default" mat-mini-fab color="accent">
+                    <div style=" display: flex; align-items: center;">
+                        <button style="cursor: default;" mat-mini-fab color="accent">
                             {{postService.getUserNameInitial(post.userName)}}
                         </button>
-                        <button mat-button [matMenuTriggerFor]="menu">{{post.userName}}</button>
+                        <h4 mat-button [matMenuTriggerFor]="menu" class="user_name">{{post.userName}}</h4>
                         <mat-menu #menu="matMenu">
                             <button *ngFor="let user of usersList" mat-menu-item (click)="userChanged(user, post)">
-                                <button style="cursor: default" mat-mini-fab color="accent">
+                                <button  class="menu_avatar"  mat-mini-fab color="accent">
                                     {{postService.getUserNameInitial(user.name)}}
                                 </button> {{user.name}}
                             </button>
-                            <button mat-menu-item>New +</button>
+                            <button mat-menu-item (click)="addNewUser()">New +</button>
                         </mat-menu>
                     </div>
-                    <div>
-                        <mat-icon>today</mat-icon> {{postService.getPostDate(post.date)}}
+                    <div style="position:relative; display: flex; align-items: center;">
+                        <mat-icon style="margin-right: 5px">today</mat-icon> {{postService.getPostDate(post.date)}}
+                        <input type="date"
+                            #postDate
+                            style="position: absolute;
+                            left: 0;
+                            top: 0;
+                            width: 24px;
+                            height: 24px;
+                            opacity: 0;"
+                            aria-label="Board"
+                            [(ngModel)]="post.date">
                     </div>
                 </div>
-                <div [contentEditable]="true" (blur)="updatePost($event, post)">
+                <div style="margin: 12px 0px; outline: none;" [contentEditable]="true" (blur)="updatePostText($event, post)">
                     {{post.text}}
                 </div>
                 <div>
-                    <button mat-button [matMenuTriggerFor]="menu">{{post.board}}</button>
-                    <mat-menu #menu="matMenu">
+                    <span mat-button [matMenuTriggerFor]="boardMenu" class="jira_dropdown">{{post.board}}</span>
+                    <mat-menu #boardMenu="matMenu">
                         <button mat-menu-item>JIRA</button>
                         <button mat-menu-item>Slack</button>
                         <button mat-menu-item>Trello</button>
                         <button mat-menu-item>None</button>
                     </mat-menu>
-                    <!-- {{post.board}} -->
                 </div>
             </mat-card>
         </div>
