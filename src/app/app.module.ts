@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
@@ -15,7 +16,7 @@ import { AppComponent } from './app.component';
 import { PostsListComponent } from './components/posts-list/posts-list.component';
 import { AddNewPostComponent } from './components/add-new-post/add-new-post.component';
 import { AddNewUserComponent } from './components/add-new-user/add-new-user.component';
-import { PostService } from './services/main.service';
+import { PostService } from './services/utility.service';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { PostService } from './services/main.service';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,
     MatMenuModule,

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddNewPostComponent } from './components/add-new-post/add-new-post.component';
-import { PostService } from './services/main.service';
+import { PostService } from './services/utility.service';
 
 @Component({
   selector: 'app-root',

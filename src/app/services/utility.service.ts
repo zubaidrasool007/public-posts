@@ -43,4 +43,14 @@ export class PostService {
         return monthNames[postDateObject.getMonth()] + ' ' + postDate;
     }
 
+    getAllPosts() {}
+
+    createPost() {}
+
+    updatePost() {}
+
+    createUser() {}
+
+    getAllUser() {}
+
 }

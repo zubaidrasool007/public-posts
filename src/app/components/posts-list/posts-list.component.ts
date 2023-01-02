@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, TemplateRef } from '@angular/core';
-import { PostService } from 'src/app/services/main.service';
+import { PostService } from 'src/app/services/utility.service';
 import { AddNewUserComponent } from '../add-new-user/add-new-user.component';
 
 @Component({
