@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
     selector: 'add-new-user',
@@ -7,7 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AddNewUserComponent {
 
+    newUser: any = { name: '', _id: null };
+
     constructor(
+        public dialogRef: MatDialogRef<AddNewUserComponent>,
     ) {
+    }
+
+    onCloseClick(): void {
+        this.dialogRef.close();
     }
 }

@@ -39,8 +39,15 @@
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Date</mat-label>
+        <input type="date"
+               aria-label="Board"
+               matInput
+               [(ngModel)]="newPost.date">
+      </mat-form-field>
 </div>
 <div mat-dialog-actions>
-    <button mat-button (click)="onCloseClick()" cdkFocusInitial>Close</button>
-    <button [disabled]="!newPost.board || !newPost.userName || !newPost.text" mat-button [mat-dialog-close]="newPost">Ok</button>
+    <button mat-button (click)="onCloseClick()" cdkFocusInitial>Cancel</button>
+    <button [disabled]="!newPost.board || !newPost.userName || !newPost.text" mat-button [mat-dialog-close]="newPost">Add</button>
 </div>

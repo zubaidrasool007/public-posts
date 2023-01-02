@@ -9,6 +9,6 @@
     <mat-icon style="cursor: pointer;" color="accent" (click)="addNewPost()">add_to_queue</mat-icon>
   </div>
   <div class="post-list-container">
-    <posts-list [postsList]="posts" [usersList]="users"></posts-list>
+    <posts-list (postUpdated)="handleUpdatedPost($event)" (newUserAdded)="handleNewUser($event)" [postsList]="posts" [usersList]="users"></posts-list>
   </div>
 </div>

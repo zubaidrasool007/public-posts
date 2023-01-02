@@ -1,0 +1,18 @@
+.user_name {
+    margin-bottom: 0;
+    margin-left: 12px;
+    cursor: pointer;
+}
+.menu_avatar {
+    cursor: default;
+    box-shadow: unset;
+}
+.jira_dropdown{
+    font-weight: 500;
+    cursor: pointer;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor:pointer;
+    height: 24px;
+    width: 24px;
+}

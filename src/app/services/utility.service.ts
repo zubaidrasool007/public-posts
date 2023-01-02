@@ -2,8 +2,9 @@ import { ComponentType } from '@angular/cdk/portal';
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
-export const monthNames = ["Jan", "Feb", "March", "April", "May", "June",
-"July", "Aug", "Sep", "Oct", "Nov", "Dec"
+export const monthNames = [
+    "Jan", "Feb", "March", "April", "May", "June",
+    "July", "Aug", "Sep", "Oct", "Nov", "Dec"
 ];
 
 @Injectable()
@@ -34,12 +35,22 @@ export class PostService {
             case 3:
                 postDate = postDate + 'rd';
                 break;
-        
+
             default:
                 postDate = postDate + 'th';
                 break;
         }
         return monthNames[postDateObject.getMonth()] + ' ' + postDate;
     }
+
+    getAllPosts() {}
+
+    createPost() {}
+
+    updatePost() {}
+
+    createUser() {}
+
+    getAllUser() {}
 
 }
